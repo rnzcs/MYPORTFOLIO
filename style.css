@@ -547,6 +547,23 @@ img {
     padding: 0.45rem 0.7rem;
     border-radius: 999px;
     font-size: 0.85rem;
+    animation: tagFloat 2.5s ease-in-out infinite;
+    position: relative;
+    border: 1px solid rgba(124, 156, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.tech-stack span:nth-child(2) { animation-delay: 0.1s; }
+.tech-stack span:nth-child(3) { animation-delay: 0.2s; }
+.tech-stack span:nth-child(4) { animation-delay: 0.3s; }
+.tech-stack span:nth-child(5) { animation-delay: 0.4s; }
+.tech-stack span:nth-child(6) { animation-delay: 0.5s; }
+
+.tech-stack span:hover {
+    background: rgba(124, 156, 255, 0.28);
+    border-color: rgba(124, 156, 255, 0.6);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(124, 156, 255, 0.2);
 }
 
 .project-grid {
@@ -686,6 +703,48 @@ img {
     min-height: 1.2rem;
 }
 
+.contact-info {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: rgba(124, 156, 255, 0.1);
+    border: 1px solid rgba(124, 156, 255, 0.2);
+}
+
+.contact-info p {
+    margin: 0.6rem 0;
+    color: var(--text);
+}
+
+.contact-info a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--accent-strong);
+}
+
+.page-footer {
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.footer-content p {
+    margin: 0.5rem 0;
+}
+
 .modal {
     position: fixed;
     inset: 0;
@@ -751,6 +810,11 @@ img {
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes tagFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
 }
 
 @media (max-width: 900px) {
