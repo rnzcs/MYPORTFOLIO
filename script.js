@@ -23,7 +23,7 @@ const loaderStatus = document.getElementById('loaderStatus');
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 const viewPanels = document.querySelectorAll('.view-panel');
-const navItems = document.querySelectorAll('.nav-link, .logo, .brand-pill, .btn, .card-link, .text-link');
+const navItems = document.querySelectorAll('.nav-link, .logo, .brand-pill, .btn, .card-link, .text-link, .project-btn');
 
 window.addEventListener('load', () => {
     let progress = 0;
