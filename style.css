@@ -540,7 +540,6 @@ img {
 }
 
 .chip-list span,
-.tech-stack span,
 .modal-tags span {
     background: rgba(124, 156, 255, 0.16);
     color: #dfe8ff;
@@ -621,8 +620,31 @@ img {
 .tech-stack {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.8rem;
     margin: 0.75rem 0;
+}
+
+.tech-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(124, 156, 255, 0.15);
+    border: 1px solid rgba(124, 156, 255, 0.3);
+    border-radius: 0.8rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: tagFloat 2.5s ease-in-out infinite;
+    position: relative;
+}
+
+.tech-icon:hover {
+    background: rgba(124, 156, 255, 0.3);
+    border-color: rgba(124, 156, 255, 0.6);
+    transform: translateY(-6px) scale(1.12);
+    box-shadow: 0 12px 24px rgba(124, 156, 255, 0.25);
 }
 
 .project-actions {
@@ -793,6 +815,28 @@ img {
 
 .modal-cta {
     margin-top: 1rem;
+}
+
+.modal-section {
+    margin: 1.2rem 0;
+    padding: 1rem;
+    background: rgba(124, 156, 255, 0.08);
+    border-left: 3px solid var(--accent);
+    border-radius: 0.6rem;
+}
+
+.modal-label {
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+}
+
+.modal-section p {
+    color: var(--text);
+    line-height: 1.7;
 }
 
 @keyframes bounceLetter {

@@ -2,16 +2,19 @@ const projectDetails = {
     safepath: {
         title: 'SafePath',
         description: 'A web-based campus navigation system built for Gordon College. Provides smart pathfinding using Dijkstra and A* algorithms, PWD-accessible route options, emergency exit routing for campus safety, secure login with OTP verification and QR code support, navigation history tracking, and comprehensive report generation for users and administrators.',
+        process: 'Built with React frontend and Node.js backend, implemented pathfinding algorithms (Dijkstra & A*) for optimal campus routing, integrated Maps API for spatial visualization, added secure OTP authentication with QR support for seamless access, and created comprehensive admin dashboard for incident reporting and route analysis.',
         tags: ['React', 'Node.js', 'Pathfinding', 'OTP Auth', 'Maps API', 'QR Code', 'Accessibility']
     },
     dashboard: {
         title: 'Client Dashboard',
         description: 'A responsive admin experience built to keep information organized, accessible, and easy to manage for everyday users.',
+        process: 'Developed with React and modern UI patterns, focused on accessibility compliance (WCAG), implemented responsive grid layouts for multi-device support, created intuitive data visualization, and ensured fast load times with optimized components.',
         tags: ['Dashboard', 'Accessibility', 'React']
     },
     booking: {
         title: 'Service Portal',
         description: 'A streamlined experience focused on simplifying user flow and creating a more confident first interaction.',
+        process: 'Built with vanilla JavaScript for lightweight performance, designed intuitive UX flows through user research, implemented accessibility best practices, created smooth transitions and interactions, and optimized for mobile-first experience.',
         tags: ['Accessibility', 'User Flow', 'JavaScript']
     }
 };
@@ -75,6 +78,7 @@ navItems.forEach(item => {
 const modal = document.getElementById('projectModal');
 const modalTitle = document.getElementById('modalTitle');
 const modalDescription = document.getElementById('modalDescription');
+const modalProcess = document.getElementById('modalProcess');
 const modalTags = document.getElementById('modalTags');
 const closeModal = document.querySelector('.modal-close');
 
@@ -84,6 +88,7 @@ function openProjectModal(projectKey) {
 
     modalTitle.textContent = details.title;
     modalDescription.textContent = details.description;
+    modalProcess.textContent = details.process;
     modalTags.innerHTML = details.tags.map(tag => `<span>${tag}</span>`).join('');
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');

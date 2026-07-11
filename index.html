@@ -160,15 +160,15 @@
                             <h3>SafePath</h3>
                             <p>A web-based campus navigation system for Gordon College. Features smart pathfinding with Dijkstra & A* algorithms, PWD-accessible routes, emergency exit routing, secure OTP & QR login, and navigation history with report generation.</p>
                             <div class="tech-stack">
-                                <span>React</span>
-                                <span>Node.js</span>
-                                <span>Pathfinding Algorithms</span>
-                                <span>OTP Authentication</span>
-                                <span>Maps API</span>
-                                <span>QR Support</span>
+                                <span class="tech-icon" data-tech="react" title="React">⚛️</span>
+                                <span class="tech-icon" data-tech="nodejs" title="Node.js">⬢</span>
+                                <span class="tech-icon" data-tech="algorithms" title="Algorithms">🔄</span>
+                                <span class="tech-icon" data-tech="security" title="OTP Auth">🔐</span>
+                                <span class="tech-icon" data-tech="maps" title="Maps API">🗺️</span>
+                                <span class="tech-icon" data-tech="qr" title="QR Code">📱</span>
                             </div>
                             <div class="project-actions">
-                                <button class="project-btn" data-view="contact">Discuss ideas</button>
+                                <button class="project-btn" data-project="safepath">View details</button>
                                 <a href="https://safepath-backend.vercel.app/" class="text-link" target="_blank" rel="noopener noreferrer">Open SafePath</a>
                             </div>
                         </div>
@@ -180,12 +180,12 @@
                             <h3>Client Dashboard</h3>
                             <p>A responsive admin experience built to keep information organized, accessible, and easy to manage.</p>
                             <div class="tech-stack">
-                                <span>Dashboard</span>
-                                <span>Accessibility</span>
-                                <span>React</span>
+                                <span class="tech-icon" data-tech="dashboard" title="Dashboard">📊</span>
+                                <span class="tech-icon" data-tech="accessibility" title="Accessibility">♿</span>
+                                <span class="tech-icon" data-tech="react" title="React">⚛️</span>
                             </div>
                             <div class="project-actions">
-                                <button class="project-btn" data-view="contact">Discuss ideas</button>
+                                <button class="project-btn" data-project="dashboard">View details</button>
                                 <a href="https://github.com/rnzcs" class="text-link" target="_blank" rel="noopener noreferrer">Open GitHub</a>
                             </div>
                         </div>
@@ -197,12 +197,12 @@
                             <h3>Service Portal</h3>
                             <p>A streamlined experience focused on simplifying user flow and creating a more confident first interaction.</p>
                             <div class="tech-stack">
-                                <span>JavaScript</span>
-                                <span>UX Flow</span>
-                                <span>Accessibility</span>
+                                <span class="tech-icon" data-tech="javascript" title="JavaScript">📝</span>
+                                <span class="tech-icon" data-tech="ux" title="UX Flow">✨</span>
+                                <span class="tech-icon" data-tech="accessibility" title="Accessibility">♿</span>
                             </div>
                             <div class="project-actions">
-                                <button class="project-btn" data-view="contact">Discuss ideas</button>
+                                <button class="project-btn" data-project="booking">View details</button>
                                 <a href="https://github.com/rnzcs" class="text-link" target="_blank" rel="noopener noreferrer">Open GitHub</a>
                             </div>
                         </div>
@@ -253,8 +253,11 @@
             <button class="modal-close" aria-label="Close project details">×</button>
             <h3 id="modalTitle"></h3>
             <p id="modalDescription"></p>
+            <div class="modal-section">
+                <p class="modal-label">How it was built</p>
+                <p id="modalProcess"></p>
+            </div>
             <div class="modal-tags" id="modalTags"></div>
-            <a href="#contact" class="btn btn-secondary modal-cta">Discuss this idea</a>
         </div>
     </div>
 
