@@ -1,18 +1,18 @@
 const projectDetails = {
-    luxury: {
-        title: 'Luxury Brand Landing Page',
-        description: 'A premium landing experience designed to highlight services, elevate visual storytelling, and increase confidence at first glance.',
-        tags: ['Luxury UI', 'Conversion Focus', 'Visual Storytelling']
+    safepath: {
+        title: 'SafePath',
+        description: 'A web-based campus navigation system built for Gordon College. Provides smart pathfinding using Dijkstra and A* algorithms, PWD-accessible route options, emergency exit routing for campus safety, secure login with OTP verification and QR code support, navigation history tracking, and comprehensive report generation for users and administrators.',
+        tags: ['React', 'Node.js', 'Pathfinding', 'OTP Auth', 'Maps API', 'QR Code', 'Accessibility']
     },
     dashboard: {
-        title: 'Analytics Dashboard',
-        description: 'A modern analytics experience with clean hierarchy, focused insights, and a polished interface for business teams.',
-        tags: ['React', 'Data Design', 'Dashboard UX']
+        title: 'Client Dashboard',
+        description: 'A responsive admin experience built to keep information organized, accessible, and easy to manage for everyday users.',
+        tags: ['Dashboard', 'Accessibility', 'React']
     },
     booking: {
-        title: 'Booking & Scheduling Platform',
-        description: 'An intuitive scheduling experience tailored to simplify decision-making and create a smoother user journey.',
-        tags: ['Accessibility', 'User Flow', 'Booking System']
+        title: 'Service Portal',
+        description: 'A streamlined experience focused on simplifying user flow and creating a more confident first interaction.',
+        tags: ['Accessibility', 'User Flow', 'JavaScript']
     }
 };
 
