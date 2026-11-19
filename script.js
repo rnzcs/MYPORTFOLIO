@@ -1,77 +1,56 @@
 const projectDetails = {
     safepath: {
         title: 'SafePath',
-        description: 'A web-based campus navigation system built for Gordon College. Provides smart pathfinding using Dijkstra and A* algorithms, PWD-accessible route options, emergency exit routing for campus safety, secure login with OTP verification and QR code support, navigation history tracking, and comprehensive report generation for users and administrators.',
+        description: 'A campus navigation app for Gordon College with accessible routes and emergency routing.',
         process: 'Built with React frontend and Node.js backend, implemented pathfinding algorithms (Dijkstra & A*) for optimal campus routing, integrated Maps API for spatial visualization, added secure OTP authentication with QR support for seamless access, and created comprehensive admin dashboard for incident reporting and route analysis.',
         tags: ['React', 'Node.js', 'Pathfinding', 'OTP Auth', 'Maps API', 'QR Code', 'Accessibility']
-    },
-    dashboard: {
-        title: 'Client Dashboard',
-        description: 'A responsive admin experience built to keep information organized, accessible, and easy to manage for everyday users.',
-        process: 'Developed with React and modern UI patterns, focused on accessibility compliance (WCAG), implemented responsive grid layouts for multi-device support, created intuitive data visualization, and ensured fast load times with optimized components.',
-        tags: ['Dashboard', 'Accessibility', 'React']
-    },
-    booking: {
-        title: 'Service Portal',
-        description: 'A streamlined experience focused on simplifying user flow and creating a more confident first interaction.',
-        process: 'Built with vanilla JavaScript for lightweight performance, designed intuitive UX flows through user research, implemented accessibility best practices, created smooth transitions and interactions, and optimized for mobile-first experience.',
-        tags: ['Accessibility', 'User Flow', 'JavaScript']
     }
 };
 
-const loaderScreen = document.getElementById('loaderScreen');
-const mainContent = document.getElementById('mainContent');
-const loaderPercent = document.getElementById('loaderPercent');
-const loaderStatus = document.getElementById('loaderStatus');
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 const viewPanels = document.querySelectorAll('.view-panel');
-const navItems = document.querySelectorAll('.nav-link, .logo, .brand-pill, .btn, .card-link, .text-link, .project-btn');
-
-window.addEventListener('load', () => {
-    let progress = 0;
-    const interval = setInterval(() => {
-        progress += Math.floor(Math.random() * 16) + 8;
-        if (progress >= 100) {
-            progress = 100;
-            loaderPercent.textContent = '100%';
-            loaderStatus.textContent = 'Dashboard ready. Opening your portfolio...';
-            clearInterval(interval);
-            setTimeout(() => {
-                loaderScreen?.classList.add('hidden');
-                mainContent?.classList.add('ready');
-            }, 500);
-        } else {
-            loaderPercent.textContent = `${progress}%`;
-            loaderStatus.textContent = 'Loading interfaces and content...';
-        }
-    }, 180);
-});
+const viewLinks = document.querySelectorAll('[data-view]');
+const navItems = document.querySelectorAll('.nav-link');
 
 menuToggle?.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('open');
+    const isOpen = navLinks?.classList.toggle('open') ?? false;
     menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
 });
 
-function showView(viewName) {
-    viewPanels.forEach(panel => {
-        panel.classList.toggle('active', panel.id === `view-${viewName}`);
+function showView(viewName, focusHeading = true) {
+    const activePanel = document.getElementById(`view-${viewName}`);
+    if (!activePanel) return;
+
+    viewPanels.forEach(panel => panel.classList.toggle('active', panel === activePanel));
+
+    navItems.forEach(link => {
+        const isActive = link.dataset.view === viewName;
+        link.classList.toggle('active', isActive);
+        if (isActive) {
+            link.setAttribute('aria-current', 'page');
+        } else {
+            link.removeAttribute('aria-current');
+        }
     });
 
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.toggle('active', link.dataset.view === viewName);
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (focusHeading) {
+        activePanel.querySelector('h1, h2')?.focus({ preventScroll: true });
+    }
 }
 
-navItems.forEach(item => {
+viewLinks.forEach(item => {
     item.addEventListener('click', event => {
         const viewName = item.dataset.view;
         if (!viewName) return;
 
         event.preventDefault();
         showView(viewName);
-        navLinks.classList.remove('open');
+        navLinks?.classList.remove('open');
         menuToggle?.setAttribute('aria-expanded', 'false');
+        menuToggle?.setAttribute('aria-label', 'Open navigation');
     });
 });
 
@@ -81,28 +60,36 @@ const modalDescription = document.getElementById('modalDescription');
 const modalProcess = document.getElementById('modalProcess');
 const modalTags = document.getElementById('modalTags');
 const closeModal = document.querySelector('.modal-close');
+let modalTrigger = null;
 
 function openProjectModal(projectKey) {
     const details = projectDetails[projectKey];
-    if (!details) return;
+    if (!details || !modal) return;
 
+    modalTrigger = document.activeElement;
     modalTitle.textContent = details.title;
     modalDescription.textContent = details.description;
     modalProcess.textContent = details.process;
     modalTags.innerHTML = details.tags.map(tag => `<span>${tag}</span>`).join('');
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    closeModal?.focus();
 }
 
 document.querySelectorAll('.project-btn').forEach(button => {
     button.addEventListener('click', () => openProjectModal(button.dataset.project));
 });
 
-showView('dashboard');
+showView('dashboard', false);
 
 function closeProjectModal() {
+    if (!modal?.classList.contains('open')) return;
+
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    modalTrigger?.focus();
 }
 
 closeModal?.addEventListener('click', closeProjectModal);
@@ -111,7 +98,17 @@ modal?.addEventListener('click', event => {
 });
 
 document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') closeProjectModal();
+    if (event.key === 'Escape') {
+        closeProjectModal();
+        navLinks?.classList.remove('open');
+        menuToggle?.setAttribute('aria-expanded', 'false');
+        menuToggle?.setAttribute('aria-label', 'Open navigation');
+    }
+
+    if (event.key === 'Tab' && modal?.classList.contains('open')) {
+        event.preventDefault();
+        closeModal?.focus();
+    }
 });
 
 const contactForm = document.getElementById('contactForm');
@@ -120,8 +117,12 @@ const formStatus = document.getElementById('formStatus');
 contactForm?.addEventListener('submit', event => {
     event.preventDefault();
     const formData = new FormData(contactForm);
-    const name = formData.get('name')?.toString().trim() || 'there';
+    const name = String(formData.get('name') ?? '').trim();
+    const email = String(formData.get('email') ?? '').trim();
+    const message = String(formData.get('message') ?? '').trim();
+    const subject = `Portfolio inquiry from ${name}`;
+    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
 
-    formStatus.textContent = `Thanks, ${name}! Your message is ready to send. I will reply shortly.`;
-    contactForm.reset();
+    formStatus.textContent = 'Opening your email app with your message. Review it there, then send it.';
+    window.location.href = `mailto:renzsabeniano1426@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });

@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      "vercel.json",
+      ".*",
+      "**/node_modules/**",
+      "**/.venv/**",
+      "**/.git/**"
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false
+  }
+}
