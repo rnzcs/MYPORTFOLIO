@@ -2,6 +2,11 @@
 
 A responsive developer portfolio featuring an introduction, about section, selected work, and contact form.
 
+## Live portfolio
+
+- Vercel: https://portfolio-one-xi-glrl91glot.vercel.app
+- Firebase Hosting: https://renzportfolio.web.app
+
 ## Run locally
 
 Open `index.html` in a browser, or use a simple static server.
